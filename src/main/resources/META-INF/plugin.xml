@@ -1,0 +1,33 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.sushant.WordCounter</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Word Counter</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="sushant.pulavarthi09@gmail.com"/>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="com.sushant.wordcounter.CounterWindowFactory" id="Word Counter Window"/>
+    </extensions>
+
+    <actions>
+        <action
+                id="WordCounter"
+                class="com.sushant.wordcounter.WordCounter"
+                text="Word Counter"
+                description="Count length of each word in selection">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl m"/>
+        </action>
+    </actions>
+
+</idea-plugin>
