@@ -45,12 +45,9 @@ class WordCounter : DumbAwareAction() {
         val processHandler = OSProcessHandler(commandLine)
 
         // Setup tool window manager
-        val contentManager = ToolWindowManager.getInstance(project).getToolWindow("Word Counter Window")?.contentManager
-        val factory = contentManager?.factory
-        if (contentManager == null || factory == null) {
-            println("No content manager or factory")
-            return
-        }
+        val toolWindow = ToolWindowManager.getInstance(project).getToolWindow("Word Counter Window") ?: return
+        val contentManager = toolWindow.contentManager
+        val factory = contentManager.factory
 
         // Drop first line of output - python command
         var first = false
@@ -93,6 +90,7 @@ class WordCounter : DumbAwareAction() {
 
                     contentManager.addContent(content)
                     contentManager.setSelectedContent(content)
+                    toolWindow.show()
                 }
             }
         })
